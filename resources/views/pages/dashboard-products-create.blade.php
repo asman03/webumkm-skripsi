@@ -64,7 +64,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Thumbnails</label>
-                        <input type="file" id="file" class="form-control" name="photo"/>
+                        <input type="file" id="file" class="form-control" name="photo[]" multiple/>
                         {{-- <p class="text-muted">
                           Kamu bisa memilih lebih dari satu file
                         </p> --}}

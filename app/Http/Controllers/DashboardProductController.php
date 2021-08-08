@@ -70,16 +70,14 @@ class DashboardProductController extends Controller
 
         if ($request->hasFile('photo')){
             
-            $photos = $request->file('photo');
-
-            foreach ($photos as $photo) {
+                $photos = $request->file('photo');            
 
                 $data= $request->all();
 
                 $data['slug'] = Str::slug($request->name);
                 $product=Product::create($data);
 
-                
+                foreach ($photos as $photo) {
                 $uploadphoto = [
                     'products_id' => $product->id,
                     'photos' => $photo->store('assets/product','public')
