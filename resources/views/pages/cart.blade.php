@@ -101,7 +101,7 @@
                       class="form-control"
                       id="addres"
                       name="address"
-                      value="{{ $users->address }}"
+                      value="{{ $users->address ?? 'Lengkapi Profilmu' }}"
                     />
                   </div>
                 </div>
@@ -125,7 +125,7 @@
                       id="villages"
                       class="form-control"
                     >
-                      <option value="{{ $users->villages_id }}">{{ $users->village->villages_name ?? ''  }}</option>
+                      <option value="{{ $users->villages_id }}">{{ $users->village->villages_name ?? 'Lengkapi Profilmu'  }}</option>
                       @foreach ($villages as $village)
                         <option value="{{ $village->id }}">{{ $village->villages_name }}</option> 
                       @endforeach                                         
@@ -167,7 +167,7 @@
                       type="text"
                       class="form-control"
                       id="phone"
-                      value="{{ $users->phone }}"
+                      value="{{ $users->phone ?? 'Lengkapi Profilmu' }}"
                     />
                   </div>
                 </div>
