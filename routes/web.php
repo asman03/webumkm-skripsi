@@ -32,7 +32,7 @@ Route::get('/success', 'SuccessController@index')->name('success');
 Route::get('/register/success', 'Auth\RegisterController@success')->name('register');
 
 
-Route::group(['middleware' => ['auth']], function(){
+Route::group(['middleware' => ['auth','verified']], function(){
         Route::get('/cart', 'CartController@index')->name('cart');
         Route::delete('/cart/{id}', 'CartController@delete')->name('cart-delete');
         Route::post('/checkout', 'CheckoutController@process')->name('checkout');
