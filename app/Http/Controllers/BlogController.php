@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\blog;
+use App\Blog;
 
 class BlogController extends Controller
 {
@@ -11,8 +11,8 @@ class BlogController extends Controller
     {
 
         // tampilkan berdasarkan tanggal publish terbaru
-        $blogs = blog::orderBy('tgl_publish','desc')->get();
-        $blog = blog::orderBy('tgl_publish','desc')->first();
+        $blogs = Blog::orderBy('tgl_publish','desc')->get();
+        $blog = Blog::orderBy('tgl_publish','desc')->first();
         
         return view('pages.blog', [
             'blogs' => $blogs
