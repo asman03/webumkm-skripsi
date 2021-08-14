@@ -65,9 +65,9 @@
                       <div class="form-group">
                         <label>Thumbnails</label>
                         <input type="file" id="file" class="form-control" name="photo[]" multiple/>
-                        {{-- <p class="text-muted">
+                        <p class="text-muted">
                           Kamu bisa memilih lebih dari satu file
-                        </p> --}}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -81,50 +81,6 @@
                 </div>
               </div>
             </form>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-body">
-                {{-- <div class="row">
-                  @foreach ($product->galleries as $gallery)
-                      <div class="col-md-4">
-                        <div class="gallery-container">
-                          <img
-                            src="{{ Storage::url($gallery->photos) }}"
-                            alt=""
-                            class="w-100"
-                          />
-                          <a href="{{ route('dashboard-product-gallery-delete', $gallery->id) }}" class="delete-gallery">
-                            <img src="/images/icon-delete.svg" alt="" />
-                          </a>
-                        </div>
-                      </div>
-                  @endforeach
-                  <div class="col-12">
-                    <form action="{{ route('dashboard-product-gallery-upload') }}" method="POST" enctype="multipart/form-data">
-                      @csrf
-                      {{-- <input type="hidden" name="products_id" value="{{ $product->id }}"> --}}
-                        {{-- <input
-                          type="file"
-                          id="file"
-                          name="photos"
-                          style="display: none"
-                          onchange="form.submit()"
-                        />
-                        <button
-                          type="button"
-                          class="btn btn-secondary btn-block mt-3"
-                          onClick="FileUpload()"
-                        >
-                          Tambah Photo
-                        </button>
-                    </form>
-                  </div> --}}
-                {{-- </div> --}}
-              </div>
-            </div>
           </div>
         </div>
       </div>
