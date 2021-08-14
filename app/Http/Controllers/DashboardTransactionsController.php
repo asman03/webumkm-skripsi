@@ -14,12 +14,12 @@ class DashboardTransactionsController extends Controller
         $sellTransaction = TransactionDetail::with(['transaction.user','product.galleries'])
                         ->whereHas('product', function($product){
                             $product->where('users_id', Auth::user()->id);
-                        })->get();
+                        })->latest()->get();
         
         $buyTransaction = TransactionDetail::with(['transaction.user','product.galleries'])
                         ->whereHas('transaction', function($transaction){
                             $transaction->where('users_id', Auth::user()->id);
-                        })->get();
+                        })->latest()->get();
 
 
         return view('pages.dashboard-transactions',[
