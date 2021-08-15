@@ -19,6 +19,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/register/check', 'Auth\RegisterController@check')->name('api-register-check');
-
+Route::post('/midtrans/callback', 'CheckoutController@callback')->name('midtrans-checkout');
 
 
