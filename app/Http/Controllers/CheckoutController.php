@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Mail;
+
+
 use App\Cart;
 use App\Transaction;
 use App\TransactionDetail;
@@ -132,22 +135,34 @@ class CheckoutController extends Controller
         }
 
         else if($status == 'settlement') {
-            $transaction->status = 'SUCCESS';
+            $transaction->transaction_status = 'SUCCESS';
         }
         else if($status == 'pending') {
-            $transaction->status = 'PENDING';
+            $transaction->transaction_status = 'PENDING';
         }
         else if($status == 'deny') {
-            $transaction->status = 'CANCELED';
+            $transaction->transaction_status = 'FAILED';
         }
         else if($status == 'expire') {
-            $transaction->status = 'CANCELED';
+            $transaction->transaction_status = 'EXPIRED';
         }
         else if($status == 'cancel') {
-            $transaction->status = 'CANCELED';
+            $transaction->transaction_status = 'CANCELED';
         }
 
         //simpan transaksi
         $transaction->save();
+    }
+
+    public function finishRedirect(Request $request){
+        return view('pages.success_trf');
+    }
+
+    public function unfinishRedirect(Request $request){
+        return view('pages.unfinish_trf');
+    }
+
+    public function errorRedirect(Request $request){
+        return view('pages.failed_trf');
     }
 }
