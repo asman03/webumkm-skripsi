@@ -37,6 +37,13 @@ Route::group(['middleware' => ['auth','verified']], function(){
         Route::delete('/cart/{id}', 'CartController@delete')->name('cart-delete');
         Route::post('/checkout', 'CheckoutController@process')->name('checkout');
         Route::post('/checkout/callback', 'CheckoutController@callback')->name('midtrans-checkout');
+        Route::get('/checkout/finish', 'CheckoutController@finishRedirect')->name('midtrans-finish');
+        Route::get('/checkout/unfinish', 'CheckoutController@unfinishRedirect')->name('midtrans-unfinish');
+        Route::get('/checkout/error', 'CheckoutController@errorRedirect')->name('midtrans-error');
+
+
+
+
 
 
         Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
