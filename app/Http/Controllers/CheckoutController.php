@@ -104,6 +104,7 @@ class CheckoutController extends Controller
 
     public function callback(Request $request)
     {
+        dd('test callback');
         //Set konfigurasi midtrans
         Config::$serverKey = config('services.midtrans.serverKey');
         Config::$isProduction = config('services.midtrans.isProduction');
