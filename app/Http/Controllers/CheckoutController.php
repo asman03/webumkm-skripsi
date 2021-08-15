@@ -113,11 +113,15 @@ class CheckoutController extends Controller
         //Instance midtrans notification
         $notification = new Notification();
 
+        // pecah order id agar masuk ke database
+        $order = explode('-', $notification->order_id);
+
         //Assign ke variable untuk memudahkan coding
+        // $order_id = $notification->order_id;
         $status = $notification->transaction_status;
         $type = $notification->payment_type;
         $fraud = $notification->fraud_status;
-        $order_id = $notification->order_id;
+        $order_id = $order[1]; 
 
         //Cari transaksi berdasarkan ID
         $transaction = Transaction::findOrFail($order_id);
