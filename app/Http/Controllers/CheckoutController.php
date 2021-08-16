@@ -104,7 +104,7 @@ class CheckoutController extends Controller
 
     public function callback(Request $request)
     {
-        dd('test callback');
+        // dd('test callback');
         //Set konfigurasi midtrans
         Config::$serverKey = config('services.midtrans.serverKey');
         Config::$isProduction = config('services.midtrans.isProduction');
@@ -115,17 +115,19 @@ class CheckoutController extends Controller
         $notification = new Notification();
 
         // pecah order id agar masuk ke database
-        $order = explode('-', $notification->order_id);
+        // $order = explode('-', $notification->order_id);
 
         //Assign ke variable untuk memudahkan coding
-        // $order_id = $notification->order_id;
+        // $order_id = $order[1];
+
         $status = $notification->transaction_status;
         $type = $notification->payment_type;
         $fraud = $notification->fraud_status;
-        $order_id = $order[1]; 
+        $orderid = $notification->order_id; 
 
         //Cari transaksi berdasarkan ID
-        $transaction = Transaction::findOrFail($order_id);
+        $transaction = Transaction::findOrFail($orderid);
+        dd($transaction);
 
         //Handle notification status
         if($status == 'capture') {
