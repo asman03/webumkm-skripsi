@@ -120,14 +120,16 @@
                 <div class="col-md-6">
                   <div class="form-group">
                     <label for="villages" class="">Desa</label>
-                    <input
-                      type="text"
-                      class="form-control"
+                    <select
                       name="villages_id"
                       id="villages"
                       class="form-control"
-                      value="{{ $users->village->villages_name }}"
-                    />                    
+                    >
+                      <option value="{{ $users->villages_id }}">{{ $users->village->villages_name ?? 'Lengkapi Profilmu'  }}</option>
+                      @foreach ($villages as $village)
+                        <option value="{{ $village->id }}">{{ $village->villages_name }}</option> 
+                      @endforeach                                         
+                    </select>
                   </div>
                 </div>
                 {{-- <div class="col-md-6">
