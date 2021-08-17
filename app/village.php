@@ -21,4 +21,8 @@ class village extends Model
     {
         return $this->hasMany(Cart::class);
     }
+    public function transactiondetail()
+    {
+        return $this->hasMany(TransactionDetail::class);
+    }
 }

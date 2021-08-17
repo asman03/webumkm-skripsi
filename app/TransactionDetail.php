@@ -22,4 +22,8 @@ class TransactionDetail extends Model
     public function transaction(){
         return $this->hasOne(Transaction::class, 'id','transactions_id');
     }
+    public function village()
+    {
+        return $this->hasOne(village::class,'id','villages_id');
+    }
 }
