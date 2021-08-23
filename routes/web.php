@@ -34,6 +34,10 @@ Route::get('/register/success', 'Auth\RegisterController@success')->name('regist
 
 Route::group(['middleware' => ['auth','verified']], function(){
         Route::get('/cart', 'CartController@index')->name('cart');
+        Route::post('/cart-inc/{id}', 'CartController@increment')->name('inc');
+        Route::post('/cart-dec/{id}', 'CartController@decrement')->name('dec');
+
+
         Route::delete('/cart/{id}', 'CartController@delete')->name('cart-delete');
         Route::post('/checkout', 'CheckoutController@process')->name('checkout');
         Route::get('/checkout/finish', 'CheckoutController@finishRedirect')->name('midtrans-finish');
