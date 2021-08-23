@@ -40,7 +40,9 @@
                   <tr>
                     <td>Gambar</td>
                     <td>Nama &amp; seller</td>
+                    <td>Jumlah Barang</td>
                     <td>Harga</td>
+                    <td>Total</td>
                     <td>Menu</td>
                   </tr>
                 </thead>
@@ -61,10 +63,33 @@
                           <div class="product-title">{{ $cart->product->name }}</div>
                           <div class="product-subtitle">By {{$cart->product->user->store_name}}</div>
                         </td>
+
+                        <td style="width: 20%;" >
+                          <div>
+                            @if ($cart->qty > 1)
+                              <form action="{{ route('dec',$cart->id) }}" method="post" enctype="multipart/form-data">
+                              @csrf
+                              <button type="submit" class="btn btn-danger btn-sm" style="width: 25%; display:inline;">-</button>
+                              </form>
+                            @endif
+                            <input type="text" name="qty" class="form-control" style="width: 25%; display:inline;" value="{{ $cart->qty }}" readonly>
+                          
+                            <form action="{{ route('inc',$cart->id) }}" method="post" enctype="multipart/form-data" >
+                              @csrf
+                              <button type="submit" class="btn btn-success btn-sm" style="width: 25%;display:inline;" >+</button>
+                            </form>
+                          </div>
+                        </td>
+
                         <td style="width: 35%">
                           <div class="product-title">Rp. {{ number_format($cart->product->price) }}</div>
                           <div class="product-subtitle">IDR</div>
                         </td>
+
+                        <td style="width: 20%">
+                          <div class="product-title">Rp. {{ number_format($cart->total) }}</div>                          
+                        </td>
+
                         <td style="width: 20%">
                           <form action="{{ route('cart-delete', $cart->id) }}" method="POST">
                             @method('DELETE')
@@ -74,7 +99,8 @@
                         </td>
                       </tr>
                       @php
-                        $totalPrice += $cart->product->price
+                        // $totalPrice += $cart->product->price
+                        $totalPrice += $cart->total
                       @endphp
                   @endforeach
                 </tbody>
@@ -102,6 +128,7 @@
                       id="addres"
                       name="address"
                       value="{{ $users->address ?? 'Lengkapi Profilmu' }}"
+                      placeholder=""
                     />
                   </div>
                 </div>
