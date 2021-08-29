@@ -44,6 +44,7 @@
                           id="email"
                           name="email"
                           value="{{ $users->email }}"
+                          required
                         />
                       </div>
                     </div>
@@ -56,6 +57,7 @@
                           id="addres"
                           name="address"
                           value="{{ $users->address }}"
+                          required
                         />
                       </div>
                     </div>
@@ -79,6 +81,7 @@
                           name="villages_id"
                           id="villages"
                           class="form-control"
+                          required
                         >
                           <option value="{{ $users->villages_id }}">Tidak diganti ({{ $users->village->villages_name ?? ''  }})</option>
                           @foreach ($villages as $village)
@@ -109,6 +112,7 @@
                           class="form-control"
                           id="phone"
                           value="{{ $users->phone }}"
+                          required
                         />
                       </div>
                     </div>

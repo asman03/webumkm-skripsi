@@ -86,7 +86,7 @@
                           <div class="product-subtitle">IDR</div>
                         </td>
 
-                        <td style="width: 20%">
+                        <td style="width: 30%">
                           <div class="product-title">Rp. {{ number_format($cart->total) }}</div>                          
                         </td>
 
@@ -127,8 +127,8 @@
                       class="form-control"
                       id="addres"
                       name="address"
-                      value="{{ $users->address ?? 'Lengkapi Profilmu' }}"
-                      placeholder=""
+                      value="{{ $users->address ?? '' }}"
+                      required
                     />
                   </div>
                 </div>
@@ -140,7 +140,8 @@
                       class="form-control"
                       id="districts"
                       name="districts"
-                      value="Sepatan" disabled
+                      value="Sepatan" 
+                      value="{{ $users->districts }}"
                     />
                   </div>
                 </div>
@@ -151,6 +152,7 @@
                       name="villages_id"
                       id="villages"
                       class="form-control"
+                      required
                     >
                       <option value="{{ $users->villages_id }}">{{ $users->village->villages_name ?? 'Lengkapi Profilmu'  }}</option>
                       @foreach ($villages as $village)
@@ -182,8 +184,8 @@
                       class="form-control"
                       id="zip_code"
                       name="zip_code"
-                      value="15520"
-                      disabled
+                      value="15520"                      
+                      value="{{ $users->zip_code }}"
                     />
                   </div>
                 </div>
@@ -194,7 +196,9 @@
                       type="text"
                       class="form-control"
                       id="phone"
-                      value="{{ $users->phone ?? 'Lengkapi Profilmu' }}"
+                      name="phone"
+                      value="{{ $users->phone ?? '' }}"
+                      required
                     />
                   </div>
                 </div>
