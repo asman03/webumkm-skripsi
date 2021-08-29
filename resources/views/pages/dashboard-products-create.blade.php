@@ -45,6 +45,12 @@
                         <input type="number" class="form-control" name="price"/>
                       </div>
                     </div>
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label>Stok Barang</label>
+                        <input type="number" class="form-control" name="stok"/>
+                      </div>
+                    </div>
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Kategori</label>

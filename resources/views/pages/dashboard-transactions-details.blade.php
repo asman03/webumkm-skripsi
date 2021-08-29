@@ -55,6 +55,14 @@
                         <div class="product-subtitle">Rp. {{ number_format($transaction->transaction->total_price) }}</div>
                       </div>
                       <div class="col-12 col-md-6">
+                        <div class="product-title">
+                          Jumlah Barang
+                        </div>
+                        <div class="product-subtitle">
+                        {{ $transaction->qty }}
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-6">
                         <div class="product-title">No Hp</div>
                         <div class="product-subtitle">
                           {{ $transaction->transaction->user->phone }}

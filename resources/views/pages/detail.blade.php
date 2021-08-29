@@ -72,6 +72,7 @@
               <div class="col-lg-8">
                 <h1>{{ $product->name }}</h1>
                 <div class="owner">By {{ $product->user->store_name ?? 'TOKO TIDAK ADA - JANGAN CHECKOUT'}}</div>
+                <div class="owner">Stok {{ $product->stok ?? 'TOKO TIDAK ADA - JANGAN CHECKOUT'}}</div>
                 <div class="price">Rp. {{ number_format($product->price) }}</div>
               </div>
               <div class="col-lg-2" data-aos="zoom-in">
