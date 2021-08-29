@@ -52,6 +52,7 @@ class CheckoutController extends Controller
             'products_id' => $cart->product->id,
             'price' => $cart->product->price,
             'shipping_status' => 'PENDING',
+            'qty' => $cart->qty,
             'code' => $trx
             ]);
         }
@@ -126,8 +127,8 @@ class CheckoutController extends Controller
         $orderid = $notification->order_id; 
 
         //Cari transaksi berdasarkan ID
-        $transaction = Transaction::findOrFail($orderid);
-        dd($transaction);
+        $transaction = Transaction::where('code',$orderid)->first();
+        // dd($orderid);
 
         //Handle notification status
         if($status == 'capture') {
@@ -155,10 +156,11 @@ class CheckoutController extends Controller
         }
         else if($status == 'cancel') {
             $transaction->transaction_status = 'CANCELED';
-        }
+        }        
 
         //simpan transaksi
         $transaction->save();
+        // return $transaction;
     }
 
     public function finishRedirect(Request $request){
