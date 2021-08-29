@@ -21,6 +21,8 @@ class CartController extends Controller
            'villages' => $villages
 
         ]);
+        // dd($carts);
+        
     }
 
     public function delete(Request $request, $id)
